@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#172b5b">
+<title>Para Meny</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Poppins:wght@400;500;600;700&display=swap');
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%;font-family:Poppins,Arial,sans-serif}
+body{
+  background:
+    repeating-linear-gradient(135deg,#f7eee2 0,#f7eee2 12px,#f2e4d4 12px,#f2e4d4 24px);
+  color:#172b5b;
+  display:flex;justify-content:center;align-items:center;
+  padding:14px;
+}
+.phone{
+  width:min(430px,100%);
+  min-height:min(900px,calc(100vh - 28px));
+  background:#e7edf7;
+  border:8px solid #6e3e91;
+  border-radius:30px;
+  overflow:hidden;
+  position:relative;
+  box-shadow:0 18px 45px rgba(56,35,80,.25);
+}
+.inner{
+  min-height:100%;
+  background:
+    linear-gradient(45deg,rgba(255,255,255,.18) 25%,transparent 25%,transparent 75%,rgba(255,255,255,.18) 75%),
+    linear-gradient(45deg,rgba(255,255,255,.18) 25%,transparent 25%,transparent 75%,rgba(255,255,255,.18) 75%),
+    #a9c5df;
+  background-size:32px 32px;
+  background-position:0 0,16px 16px;
+  padding:18px 14px 22px;
+  position:relative;
+}
+.screen{
+  min-height:calc(min(900px,100vh - 28px) - 52px);
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  position:relative;
+}
+.screen.active{display:flex;animation:pageIn .55s ease both}
+@keyframes pageIn{
+  0%{opacity:0;transform:rotateY(-8deg) translateX(18px)}
+  100%{opacity:1;transform:rotateY(0) translateX(0)}
+}
+h1,h2,h3{
+  font-family:"Bree Serif",Georgia,serif;
+  margin:0;
+  color:#ffd62e;
+  text-align:center;
+  text-shadow:2px 2px 0 #7e3e91;
+}
+h1{font-size:2.1rem;line-height:1.05}
+h2{font-size:1.85rem;line-height:1.08}
+h3{font-size:1.35rem}
+p{line-height:1.55;margin:9px 0}
+.card{
+  background:#fffdf8;
+  border:4px solid #e95a31;
+  border-radius:22px;
+  padding:18px 16px;
+  box-shadow:7px 7px 0 #7e3e91;
+  margin:10px 0;
+}
+.center{text-align:center}
+.small{font-size:.82rem}
+.cover{
+  background:#fffdf8;
+  border:5px solid #e95a31;
+  border-radius:24px;
+  padding:24px 18px;
+  box-shadow:8px 8px 0 #7e3e91;
+}
+.cover .tiny{
+  text-transform:uppercase;
+  letter-spacing:3px;
+  font-size:.68rem;
+  font-weight:700;
+  color:#7e3e91;
+  text-align:center;
+}
+.password{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
+  margin-top:16px;
+}
+.key{
+  border:0;
+  border-radius:14px;
+  padding:13px 5px;
+  font-size:1.15rem;
+  font-weight:700;
+  color:#fff;
+  background:#e45732;
+  box-shadow:0 4px 0 #a83c24;
+  cursor:pointer;
+}
+.key:active{transform:translateY(3px);box-shadow:0 1px 0 #a83c24}
+.code{
+  height:38px;
+  display:flex;justify-content:center;align-items:center;
+  letter-spacing:8px;font-weight:700;color:#7e3e91;
+  margin-top:8px;
+}
+.error{height:22px;color:#e45732;font-size:.76rem;text-align:center}
+.btnrow{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-top:15px}
+.btn{
+  border:0;border-radius:14px;padding:12px 18px;
+  background:#7e3e91;color:#fff;font-weight:700;
+  cursor:pointer;box-shadow:0 4px 0 #512a68;
+}
+.btn.alt{background:#e45732;box-shadow:0 4px 0 #a83c24}
+.btn.light{background:#fffdf8;color:#7e3e91;border:2px solid #7e3e91;box-shadow:none}
+.motor{
+  width:92%;
+  max-width:310px;
+  display:block;
+  margin:5px auto 0;
+  filter:drop-shadow(0 12px 7px rgba(31,39,64,.24));
+}
+.gift{
+  width:92px;height:72px;margin:6px auto 11px;position:relative;
+  background:#e45732;border-radius:8px;
+  box-shadow:0 6px 0 #a83c24;
+}
+.gift:before{
+  content:"";position:absolute;left:39px;top:0;width:14px;height:72px;background:#ffd62e;
+}
+.gift:after{
+  content:"";position:absolute;left:29px;top:-17px;width:35px;height:22px;
+  border:7px solid #ffd62e;border-bottom:0;border-radius:22px 22px 0 0;
+}
+.choice-grid{display:grid;gap:14px;margin-top:14px}
+.choice{
+  background:#fffdf8;border:4px solid #e95a31;border-radius:20px;
+  padding:12px;box-shadow:6px 6px 0 #7e3e91;
+}
+.choice img{width:100%;max-height:150px;object-fit:contain;display:block}
+.choice h3{font-size:1.15rem;margin-top:3px}
+.choice .btn{width:100%;margin-top:8px}
+.page-label{
+  text-align:center;text-transform:uppercase;letter-spacing:2px;
+  color:#7e3e91;font-size:.7rem;font-weight:700;margin-bottom:8px
+}
+.letter{
+  max-height:390px;overflow:auto;
+  background:#fffdf8;border:3px dashed #e45732;border-radius:18px;
+  padding:18px;font-size:.91rem;
+}
+.letter strong{color:#7e3e91}
+.music{
+  background:#fffdf8;border:4px solid #e95a31;border-radius:20px;
+  padding:12px;box-shadow:6px 6px 0 #7e3e91;
+}
+.music iframe{
+  width:100%;height:152px;border:0;border-radius:12px;
+}
+.note{
+  font-size:.78rem;color:#5a4d63;text-align:center;margin-top:8px;
+}
+.footerline{
+  position:absolute;bottom:5px;left:0;right:0;
+  text-align:center;color:#7e3e91;font-size:.68rem;font-weight:600
+}
+</style>
+</head>
+<body>
+<div class="phone">
+<div class="inner">
+
+<section class="screen active" id="s0">
+  <div class="cover">
+    <div class="tiny">Una sorpresa para ti</div>
+    <h1>Para mi Meny</h1>
+    <p class="center">Hay una fecha que abre esta pequeña historia.</p>
+    <div class="code" id="code">________</div>
+    <div class="error" id="error"></div>
+    <div class="password">
+      <button class="key" onclick="key('1')">1</button><button class="key" onclick="key('2')">2</button><button class="key" onclick="key('3')">3</button>
+      <button class="key" onclick="key('4')">4</button><button class="key" onclick="key('5')">5</button><button class="key" onclick="key('6')">6</button>
+      <button class="key" onclick="key('7')">7</button><button class="key" onclick="key('8')">8</button><button class="key" onclick="key('9')">9</button>
+      <button class="key" onclick="backspace()">⌫</button><button class="key" onclick="key('0')">0</button><button class="key" onclick="clearCode()">C</button>
+    </div>
+    <div class="btnrow"><button class="btn" onclick="check()">ENTRAR</button></div>
+  </div>
+  <div class="footerline">Una página hecha especialmente para ti</div>
+</section>
+
+<section class="screen" id="s1">
+  <div class="page-label">Página 1</div>
+  <div class="card center">
+    <h2>Primero, una cosa...</h2>
+    <p>¿Cómo iba a hacerte un regalo y no poner una moto?</p>
+    <p>Si en tu casa sería moto, entonces aquí también. Esta sorpresa tenía que llevar un poquito de eso que tanto te gusta.</p>
+    <div class="motor"><img src="moto-hotwheels.png" style="width:100%" alt="Moto estilo juguete"></div>
+    <p><strong>Mi Meny, mi Panzón, mi Pancita de Winnie Pooh...</strong></p>
+    <div class="btnrow"><button class="btn" onclick="go(2)">PASAR LA PÁGINA</button></div>
+  </div>
+</section>
+
+<section class="screen" id="s2">
+  <div class="page-label">Página 2 · Elige un regalo</div>
+  <h2>Hay dos para ti</h2>
+  <p class="center small">Apachurra el regalito de la moto que quieras abrir.</p>
+  <div class="choice-grid">
+    <div class="choice">
+      <img src="moto-hotwheels.png" alt="Primera moto">
+      <h3>La primera sorpresa</h3>
+      <div class="gift" aria-hidden="true"></div>
+      <button class="btn alt" onclick="go(3)">ABRIR REGALO</button>
+    </div>
+    <div class="choice">
+      <img src="moto-hotwheels.png" alt="Segunda moto">
+      <h3>La segunda sorpresa</h3>
+      <div class="gift" aria-hidden="true"></div>
+      <button class="btn alt" onclick="go(4)">ABRIR REGALO</button>
+    </div>
+  </div>
+</section>
+
+<section class="screen" id="s3">
+  <div class="page-label">Regalo 1</div>
+  <div class="card center">
+    <div class="gift"></div>
+    <h2>Para mi Amor</h2>
+    <p>Este regalito trae una cosa sencilla, pero muy nuestra: recordarte que me encanta compartir contigo los días normales, los planes improvisados y esos momentos que terminan siendo nuestros favoritos.</p>
+    <p><strong>No estamos a distancia, y justo por eso quería que esto se sintiera cercano: como si estuviera ahí contigo, pero convertido en una pequeña sorpresa.</strong></p>
+    <div class="btnrow">
+      <button class="btn light" onclick="go(2)">VOLVER</button>
+      <button class="btn" onclick="go(5)">SIGUIENTE</button>
+    </div>
+  </div>
+</section>
+
+<section class="screen" id="s4">
+  <div class="page-label">Regalo 2</div>
+  <div class="card center">
+    <div class="gift"></div>
+    <h2>Para mi Pancita de Winnie Pooh</h2>
+    <p>Si pudiera envolver en una cajita todo lo que me haces sentir, seguro no cabría. Así que mejor te dejo estas palabras:</p>
+    <p><strong>Te quiero muchísimo, mi Meny. Mi Panzón. Mi Amor. Mi Mi amor.</strong></p>
+    <p>Y sí... también mi persona favorita para compartir una moto, un regalo y una historia que sea solo nuestra.</p>
+    <div class="btnrow">
+      <button class="btn light" onclick="go(2)">VOLVER</button>
+      <button class="btn" onclick="go(5)">PASAR LA PÁGINA</button>
+    </div>
+  </div>
+</section>
+
+<section class="screen" id="s5">
+  <div class="page-label">Página 3 · Una canción</div>
+  <h2>Solo para ti</h2>
+  <p class="center">Una canción que elegí para acompañar esta sorpresa.</p>
+  <div class="music">
+    <iframe src="https://open.spotify.com/embed/track/4k7Spk0xEusbybshuy9Vxz?utm_source=generator&theme=0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy" title="Solo para Ti — Camila"></iframe>
+    <p class="note">Solo Para Ti — Camila · reproductor de Spotify, sin video.</p>
+  </div>
+  <div class="btnrow">
+    <button class="btn light" onclick="go(2)">VOLVER</button>
+    <button class="btn" onclick="go(6)">PASAR LA PÁGINA</button>
+  </div>
+</section>
+
+<section class="screen" id="s6">
+  <div class="page-label">Página 4 · Una carta</div>
+  <h2>Para ti</h2>
+  <div class="letter">
+    <p><strong>Mi Meny:</strong></p>
+    <p>Quería hacerte algo diferente. Algo que pudieras abrir poquito a poquito, pasar páginas y encontrar una sorpresa en cada una.</p>
+    <p>Porque aunque no estamos a distancia, también quería regalarte un pedacito de mí en algo que pudieras guardar y volver a ver.</p>
+    <p>Gracias por ser mi Panzón, mi Pancita de Winnie Pooh, mi Amor y mi persona especial. Me encanta que nuestra historia tenga detalles que solamente nosotros entendemos.</p>
+    <p>Y si algún día vuelves a abrir esta página, quiero que recuerdes que fue hecha pensando en ti, con muchísimo cariño.</p>
+    <p class="center"><strong>Con amor,<br>para mi Meny.</strong></p>
+  </div>
+  <div class="btnrow">
+    <button class="btn light" onclick="go(5)">VOLVER</button>
+    <button class="btn" onclick="go(7)">FINAL</button>
+  </div>
+</section>
+
+<section class="screen" id="s7">
+  <div class="cover center">
+    <h1>Solo para ti</h1>
+    <p>Mi Amor, mi Meny, mi Panzón, mi Pancita de Winnie Pooh...</p>
+    <div class="motor"><img src="moto-hotwheels.png" style="width:100%" alt="Moto"></div>
+    <p>Una moto, dos regalitos, una canción y muchas palabras que se quedan contigo.</p>
+    <p><strong>Esta pequeña historia es tuya.</strong></p>
+    <div class="btnrow">
+      <button class="btn" onclick="go(2)">VOLVER A LAS MOTOS</button>
+    </div>
+  </div>
+</section>
+
+</div>
+</div>
+
+<script>
+let entered="";
+const secret="23042025";
+function render(){
+  const dots=entered.padEnd(8,"_").split("").join(" ");
+  document.getElementById("code").textContent=dots;
+}
+function key(n){
+  if(entered.length<8){entered+=n;render()}
+}
+function backspace(){entered=entered.slice(0,-1);render()}
+function clearCode(){entered="";document.getElementById("error").textContent="";render()}
+function check(){
+  if(entered===secret){document.getElementById("error").textContent="";go(1)}
+  else{document.getElementById("error").textContent="Esa no es la fecha... intenta otra vez.";entered="";render()}
+}
+function go(n){
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+  const target=document.getElementById("s"+n);
+  target.classList.add("active");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+render();
+</script>
+</body>
+</html>
